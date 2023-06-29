@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <style>
     body {
@@ -9,6 +10,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background-size: 100% auto; /* Ajusta el tamaño de la imagen de fondo */
+
       font-family: Arial, sans-serif;
       transition: background-color 0.9s;
     }
@@ -22,8 +25,15 @@
       text-align: center;
       border: 5px solid rgba(139, 69, 19, 0.7);
       box-shadow: 0px 0px 10px rgba(139, 69, 19, 0.5);
-      transition: opacity 2s;
+      transition: opacity 2s; /* Aumenta la duración de la transición a 1 segundo */
       position: relative;
+
+      max-width: 50%; /* Cambia el valor a un porcentaje menor */
+  font-size: 16px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  margin: 0 auto; /* Agrega margen automático para centrar horizontalmente */
+
+      
+
     }
     
     .text-area {
@@ -37,6 +47,10 @@
       resize: none;
       background-color: rgba(255, 255, 255, 0.8);
       color: #333;
+      width: 100%; /* Cambia el valor a un porcentaje */
+  height: 40%; /* Cambia el valor a un porcentaje */
+  font-size: 14px; /* Ajusta el tamaño de la fuente según tus necesidades */
+
     }
     
     .button {
@@ -44,6 +58,7 @@
       display: block;
       width: 100%;
       padding: 10px 20px;
+      /* background-color: #8CBF66; */
       color: white;
       text-decoration: none;
       border-radius: 5px;
@@ -56,61 +71,65 @@
       background-color: #719D4B;
     }
 
+
     .overlay-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-      transition: opacity 10s;
-      pointer-events: none;
-    }
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  
+  transition: opacity 10s;
+ 
+  pointer-events: none; /* Agrega esta línea para que los botones sigan siendo accesibles */
+}
 
-    /* Media Queries */
-    @media (max-width: 768px) {
-      .container {
-        max-width: 90%;
-      }
-    }
 
-    @media (max-width: 480px) {
-      .text-area {
-        height: 40%;
-      }
-    }
+    
   </style>
 </head>
 <body>
   <img src="humo.jpg" class="overlay-image" alt="Humo" />
   <div><br><br><br><br><br>
   <div class="container">
-    <div class="text-area"> Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de la literatura del Latin, que data del año 45 antes de Cristo, haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín </div>
+    
+    <div class="text-area" > Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de la literatura del Latin, que data del año 45 antes de Cristo, haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín </div>
     <button class="button" onclick="disolverContenedor()">Guardar</button>
     <button class="button">Limpiar</button>
     <button class="button">Compartir</button>
+   
   </div>
 </div>
   <script>
     let i = 0;
-    let opacity = 0;
+
+    let opacity = 0; // Initialize the opacity variable
     let acomp = 0;
 
-    function disolverContenedor() {
-      oscurecer();
-      const contenedor = document.querySelector('.container');
-      contenedor.style.opacity = '0';
+function disolverContenedor() {
+  oscurecer()
+  
+  const contenedor = document.querySelector('.container');
+  contenedor.style.opacity = '0'; // Set the opacity of the container to 0 (fade out)
 
-      setTimeout(function() {
-        contenedor.style.opacity = '1';
-      }, 3000);
-    }
+  setTimeout(function() {
+    
+    contenedor.style.opacity = '1'; // Set the opacity of the container back to 1 (fade in)
+  }, 3000); // Wait for 3000 milliseconds (3 seconds) before resetting the opacity
+}
+  
+  
 
-    function oscurecer() {
-      acomp++;
-      const overlayImage = document.querySelector('.overlay-image');
-      overlayImage.style.opacity = `${acomp * 0.2}`;
-    }
+
+function oscurecer() {
+  acomp++;
+  const overlayImage = document.querySelector('.overlay-image');
+  overlayImage.style.opacity = `${acomp * 0.2}`; // Increase opacity by 0.1 with each activation
+}
+ 
+  
   </script>
 </body>
 </html>
